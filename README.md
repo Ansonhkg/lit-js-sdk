@@ -7,6 +7,8 @@
     - [Static Content - Encrypting / locking](#static-content---encrypting--locking)
     - [Dynamic Content - Authorizing access to a resource via JWT](#dynamic-content---authorizing-access-to-a-resource-via-jwt)
   - [Installation](#installation)
+    - [Vite.js](#vitejs)
+    - [Web-ready package](#web-ready-package)
   - [Using the LIT Protocol](#using-the-lit-protocol)
     - [Example projects and code](#example-projects-and-code)
     - [Connecting to the network](#connecting-to-the-network)
@@ -81,6 +83,26 @@ You can then import it like so:
 ```
 import LitJsSdk from 'lit-js-sdk'
 ```
+
+### Vite.js
+
+You will need to use `jsxInject` (which is a Vite-only option) for global imports
+
+```js
+// vite.config.js
+
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+export default defineConfig({
+  plugins: [vue()],
+  jsxInject: [
+    `import LitJsSdk from 'lit-js-sdk' `, 
+  ],
+});
+```
+
+### Web-ready package
 
 We also provide a web-ready package with all dependencies included at build/index.web.js. You can import this into your HTML webpage using a script tag:
 
